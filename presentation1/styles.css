@@ -1,0 +1,227 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #4f46e5;
+    --background-color: #f9fafb;
+    --text-color: #1f2937;
+    --light-gray: #e5e7eb;
+    --correct-color: #10b981;
+    --incorrect-color: #ef4444;
+    --accent-color: #ec4899;
+    --accent-secondary: #8b5cf6;
+    --celebration-color: #fbbf24;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .quiz-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+  }
+  
+  .screen {
+    display: none;
+    padding: 30px;
+  }
+  
+  .screen.active {
+    display: block;
+  }
+  
+  h1 {
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .btn {
+    background: linear-gradient(to right, var(--primary-color), var(--accent-secondary));
+    box-shadow: 0 4px 6px rgba(99, 102, 241, 0.25);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin: 20px auto 0;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background: linear-gradient(to right, var(--accent-secondary), var(--primary-color));
+    transform: translateY(-2px);
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background-color: var(--light-gray);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  
+  #progress {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+  
+  .question-count {
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .option {
+    border-left: 4px solid var(--accent-color);
+    transition: all 0.3s ease;
+    background-color: var(--light-gray);
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .option:hover {
+    transform: translateX(5px);
+    background-color: #d1d5db;
+  }
+  
+  .option.correct {
+    background-color: var(--correct-color);
+    color: white;
+  }
+  
+  .option.incorrect {
+    background-color: var(--incorrect-color);
+    color: white;
+  }
+  
+  .result-info {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  #score,
+  #max-score {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  @media (max-width: 480px) {
+    .quiz-container {
+      border-radius: 0;
+      box-shadow: none;
+    }
+  
+    .screen {
+      padding: 20px;
+    }
+  }
+  
+  /* Confetti Animation */
+  .confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+  }
+  
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--celebration-color);
+    border-radius: 0;
+    animation: fall 3s linear forwards;
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(-100px) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  /* Celebration Splash */
+  .celebration-splash {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: splash-in 0.5s ease-out forwards;
+  }
+  
+  @keyframes splash-in {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+    }
+    70% {
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+  
